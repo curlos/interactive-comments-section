@@ -2,8 +2,6 @@ import React from 'react'
 import styles from '../styles/Comment.module.css'
 
 const Comment = ({ comment, isReply, data }) => {
-  console.log(data.currentUser.username)
-  console.log(comment.user.username)
 
   return (
     <div className={`${isReply ? styles.replyWrapper : ''}`}>
