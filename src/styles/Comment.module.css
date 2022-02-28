@@ -1,0 +1,77 @@
+.wrapper {
+  background-color: red;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  display: flex;
+  gap: 20px;
+}
+
+.score {
+  color: #5357B6;
+  background-color: #F5F6FA;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+
+.minusIcon {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.commentRightSide {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.userImage {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.commentTopRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.commentInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.username {
+  font-weight: bold;
+  color: #334253;
+}
+
+.createdAt {
+  color: #67727E;
+}
+
+.replyButton {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #5357B6;
+  font-weight: bold;
+}
+
+.content {
+  font-size: 16px;
+  color: #67727E;
+}
