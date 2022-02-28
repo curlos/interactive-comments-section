@@ -7,6 +7,10 @@ const Comment = ({ comment, isReply, data, setData }) => {
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [editOpen, setEditOpen] = useState(false)
 
+  const handleDelete = () => {
+    setData({...data, comments: data.comments.filter((c) => c.id !== comment.id)})
+  }
+
   console.log(editOpen)
 
   return (
@@ -69,7 +73,7 @@ const Comment = ({ comment, isReply, data, setData }) => {
         </div>
       )}
 
-      {deleteOpen && <DeleteCommentModal />}
+      {deleteOpen && <DeleteCommentModal setDeleteOpen={setDeleteOpen} handleDelete={handleDelete}/>}
     </div>
   )
 }
