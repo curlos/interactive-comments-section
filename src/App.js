@@ -5,16 +5,13 @@ import Comment from './components/Comment'
 
 const App = () => {
   const [data, setData] = useState(getData())
-  const [currentUser, setCurrentUser] = useState(data.currentUser)
-  const [comments, setComments] = useState(data.comments)
 
-  console.log(currentUser)
-  console.log(comments)
+  console.log(data)
 
   return (
     <div className={styles.container}>
       <div className={styles.comments}>
-        {comments.map((comment) => <Comment comment={comment} key={comment.id}/>)}
+        {data.comments.map((comment) => <Comment key={comment.id} comment={comment} data={data} />)}
       </div>
     </div>
   );
