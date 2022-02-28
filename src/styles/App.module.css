@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -7,7 +9,7 @@
   padding: 30px;
   background-color: #E9EBF0;
   min-height: 100vh;
-  font-family: sans-serif;
+  font-family: Rubik, sans-serif;
 }
 
 .comments {

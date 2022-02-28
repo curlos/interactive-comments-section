@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/Comment.module.css'
+import DeleteCommentModal from './DeleteCommentModal'
 
-const Comment = ({ comment, isReply, data }) => {
+const Comment = ({ comment, isReply, data, setData }) => {
+
+  const [deleteOpen, setDeleteOpen] = useState(false)
+  const [editOpen, setEditOpen] = useState(false)
+
+  console.log(editOpen)
 
   return (
     <div className={`${isReply ? styles.replyWrapper : ''}`}>
@@ -32,12 +38,12 @@ const Comment = ({ comment, isReply, data }) => {
 
             {comment.user.username === data.currentUser.username ? (
               <div className={styles.commentActions}>
-                <button className={[styles.replyButton, styles.deleteButton].join(' ')}>
+                <button className={[styles.replyButton, styles.deleteButton].join(' ')} onClick={() => setDeleteOpen(true)}>
                   <img src="/images/icon-delete.svg" alt="reply" />
                   Delete
                 </button>
 
-                <button className={styles.replyButton}>
+                <button className={styles.replyButton} onClick={() => setEditOpen(true)}>
                   <img src="/images/icon-edit.svg" alt="reply" />
                   Edit
                 </button>
@@ -62,6 +68,8 @@ const Comment = ({ comment, isReply, data }) => {
           {comment.replies.map((reply) => <Comment key={reply.id} comment={reply} isReply={true} data={data}/>)}
         </div>
       )}
+
+      {deleteOpen && <DeleteCommentModal />}
     </div>
   )
 }

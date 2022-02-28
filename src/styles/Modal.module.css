@@ -1,0 +1,82 @@
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  /* Full width */
+  width: 100%;
+  /* Full height */
+  height: 100%;
+
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modalContent {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 30px;
+  border: 1px solid #888;
+
+  width: 200px;
+  width: 50%;
+  border-radius: 15px;
+  /* Could be more or less, depending on screen size */
+}
+
+.modalContent h1 {
+  color: #737475;
+}
+
+.modalContent p {
+  color: #67727E;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.cancel,
+.confirm {
+  border: none;
+  color: #FFFFFF;
+  flex: 1;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: medium;
+  cursor: pointer;
+}
+
+.cancel:active,
+.confirm:active {
+  opacity: 50%;
+}
+
+.cancel {
+  background-color: #67727E;
+}
+
+.confirm {
+  background-color: #ED6368;
+}
+
+@media only screen and (max-width: 600px) {
+  .modalContent {
+    width: 90%;
+  }
+}
