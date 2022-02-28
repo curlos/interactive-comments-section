@@ -12,10 +12,10 @@ const App = () => {
   return (
     <div className={styles.container}>
       <div className={styles.comments}>
-        {data.comments.map((comment) => <Comment key={comment.id} comment={comment} data={data} setData={setData}/>)}
+        {data.comments.map((comment) => <Comment key={comment.id} comment={comment} data={data} setData={setData} />)}
       </div>
 
-      <NewCommentInput data={data} setData={setData}/>
+      <NewCommentInput data={data} setData={setData} />
     </div>
   );
 }

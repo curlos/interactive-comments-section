@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../styles/Comment.module.css'
 import DeleteCommentModal from './DeleteCommentModal'
+import EditCommentInput from './EditCommentInput'
 
 const Comment = ({ comment, isReply, data, setData }) => {
 
@@ -8,10 +9,21 @@ const Comment = ({ comment, isReply, data, setData }) => {
   const [editOpen, setEditOpen] = useState(false)
 
   const handleDelete = () => {
-    setData({...data, comments: data.comments.filter((c) => c.id !== comment.id)})
+    const newComments = [...data.comments].filter((c) => c.id !== comment.id)
+    if (!isReply) {
+      console.log(newComments.filter((c) => c.id !== comment.id))
+      setData({...data, comments: newComments.filter((c) => c.id !== comment.id)})
+    } else {
+      for (let c of newComments) {
+        c.replies = c.replies.filter((reply) => reply.id !== comment.id)
+      }
+    }
+
+    setData({...data, comments: [...newComments]})
+    setDeleteOpen(false)
   }
 
-  console.log(editOpen)
+  console.log(comment)
 
   return (
     <div className={`${isReply ? styles.replyWrapper : ''}`}>
@@ -21,10 +33,12 @@ const Comment = ({ comment, isReply, data, setData }) => {
         </div>
       )}
       <div className={`${styles.wrapper} ${isReply ? styles.reply : ''}`}>
-        <div className={styles.score}>
-          <img src="/images/icon-plus.svg" alt="plus sign" />
-          <div>{comment.score}</div>
-          <img src="/images/icon-minus.svg" alt="plus sign" className={styles.minusIcon}/>
+        <div>
+          <div className={styles.score}>
+            <img src="/images/icon-plus.svg" alt="plus sign" />
+            <div>{comment.score}</div>
+            <img src="/images/icon-minus.svg" alt="plus sign" className={styles.minusIcon}/>
+          </div>
         </div>
 
         <div className={styles.commentRightSide}>
@@ -60,16 +74,20 @@ const Comment = ({ comment, isReply, data, setData }) => {
             )}
 
           </div>
-          <div className={styles.content}>
-            {isReply && (<span className={styles.replyUsername}>@{comment.replyingTo}</span>)}
-            {comment.content}
-          </div>
+          {editOpen ? (
+            <EditCommentInput data={data} setData={setData} comment={comment} setEditOpen={setEditOpen} />
+          ) : (
+            <div className={styles.content}>
+              {isReply && (<span className={styles.replyUsername}>@{comment.replyingTo}</span>)}
+              {comment.content}
+            </div>
+          )}
         </div>
       </div>
 
       {comment.replies && comment.replies.length > 1 && (
         <div className={styles.replies}>
-          {comment.replies.map((reply) => <Comment key={reply.id} comment={reply} isReply={true} data={data}/>)}
+          {comment.replies.map((reply) => <Comment key={reply.id} comment={reply} isReply={true} data={data} setData={setData}/>)}
         </div>
       )}
 

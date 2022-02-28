@@ -1,0 +1,52 @@
+.inputTextarea {
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 10px;
+  font-family: sans-serif;
+  padding: 15px;
+  flex: 1;
+  min-height: 100px;
+  font-size: 16px;
+  resize: none;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.inputTextArea:focus,
+.inputTextArea:active {
+  outline: #5357B6;
+  border-color: #5357B6;
+}
+
+.sendButtonWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sendButton,
+.cancelButton {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #5357B6;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  border: none;
+  padding: 20px 30px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.sendButton:active,
+.cancelButton:active {
+  opacity: 50%;
+}
+
+.cancelButton {
+  background-color: #ED6368;
+}
+
+.updateCommentButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
